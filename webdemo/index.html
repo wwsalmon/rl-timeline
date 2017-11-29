@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel='stylesheet' type='text/css' href='style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300,300i,400,400i,600,600i,700,700i|Ubuntu:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<title>Visual RL History Concept</title>
+	</head>
+	<body>
+
+		<div class='smallscreen'>
+			<div>
+				<h3>Please use a bigger viewport to view this page.</h3>
+				<p>This site is in development and so only displays correctly on a screen with width 1280px and above. If you are on a mobile device, please switch to a laptop or desktop. Otherwise, try resizing your window or zooming out.</p>
+			</div>
+		</div>
+
+    <div class='navbar'>
+      <div class='navbar-inner'>
+        <div class='navbar-logo'><img src='wwsalmon.png'></div>
+        <div class='navbar-title'><span style='font-weight: 600; margin-right: 10px;'>VISUAL RL HISTORY</span><span style='opacity: 0.4;'>a concept by wwsalmon</span></div>
+        <div class='navbar-right'>
+          <div class='navbar-item' onclick="location.href='index.html';"><span>Home</span></div>
+          <div class='navbar-item' onclick="location.href='kronovi.html';"><span>Kronovi Demo</span></div>
+          <div class='navbar-item' onclick="location.href='contact.html';"><span>Feedback/Contact</span></div>
+        </div>
+      </div>
+    </div>
+
+		<div class='home-hero'>
+			<div class='home-hero-box'>
+				<div class='home-hero-name'><span>wwsalmon presents</span></div>
+				<div class='home-hero-title'><span>A New Way to<br/>see RL History</span></div>
+			</div>
+			<div class='home-hero-cta'>
+				<div class='home-hero-button' onclick="location.href='#introduction';"><span>Backstory</span></div>
+				<div class='home-hero-button' onclick="location.href='#demos';"><span>Demos</span></div>
+				<div class='home-hero-button' onclick="location.href='#progress';"><span>Progress/Future</span></div>
+				<Div class='home-hero-down'><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+			</div>
+		</div>
+
+		<div class='page-body' style='margin-top: 128px;'>
+			<img class='home-logo' src='wwsalmon.png'>
+
+			<h1 id='introduction'>Introduction</h1>
+			<p>A lot is constantly happening in the world of an Esport. Players rise, players fall. Teams are formed, orgs up players and compete in events, rosters are shuffled and changed. It's hard to keep up with these constant changes, and even harder when new to the scene to get a sense of players and teams and their long, interweaving histories.</p>
+			<p>Resources like Liquipedia are good sources to find specific information about a player or team, and have gone a long way to make information easy to find and read about. However, it's still hard to understand the connection between events reading separated walls of text.</p>
+			<p>In this Visual RL History project, I hope to conceptualize a new way to show Rocket League history: through the timeline. This is not a new idea - it's been in the back of my head for a while; <a href='https://www.reddit.com/r/RocketLeague/comments/6z3bbg/timeline_of_rlcs_teams_and_players/'>Slokh on Reddit</a> built a simple version; and the idea itself is pretty simple. However, I feel that a timeline is a very powerful and undervalued tool, and that there is much more potential to it than previously explored. To show you how, I'll stop talking and let you look at the demos I built below.</p>
+
+			<h1 id='demos'>Working Demo</h1>
+			<h3>Kronovi Wiki Page</h3>
+			<p>This demo is a redesign concept based on Liquipedia's page on Kronovi. The timeline replaces the team history section without effecting the rest of the information. Design cues taken from Rocket League Garage's glory Pro League days, as well as some other websites.</p>
+			<div class='demo-kro-outer'>
+				<div class='demo-kro-box'>
+          <div class='hero-team'>
+            <div class='hero-team-logo'><img src='g2.png'></div>
+            <div class='hero-team-name'><span>G2 Esports</span><span style='opacity: 0.3; margin-left: 12px;'>Captain, Starter</span></div>
+          </div>
+          <div class='hero-name'><span>Kronovi</span></div>
+					<div class='demo-kro-cta'>
+						<div class='home-hero-button demo-kro-button' onclick="location.href='kronovi.html';"><span>See demo</span></div>
+						<div class='home-hero-down demo-kro-down'><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+					</div>
+				</div>
+				<div class='demo-kro-hero'></div>
+			</div>
+			<h3>Explore Mode</h3>
+			<p>This demo hasn't been built yet, but here's the idea. Imagine an "explore mode", a page that's just a timeline. You can search for a player, and that player's timeline comes up. You can click through the teams and players in that player's timeline, and the page will display that team or player's timeline.</p>
+			<p>Alternatively, imagine one big timeline, with every single major player and team displayed, every single movement and major event shown. You can then pick a player and follow their movements through time, with the context of every single other player movement around them going by.</p>
+			<p>This would be a massive-scale project, one that is beyond me for some time. To read more about my future plans and hopes for this project, see the Progress section below.</p>
+
+			<h1 id='progress'>Future</h1>
+			<p>It may be important to note my background. My name is Samson Zhang, I go by wwsalmon online. I am a sophomore at a pretty intensive boarding high school, so I don't have too much time to work on projects like this. I taught myself HTML, CSS, and JQuery, and hand coded this whole website and demos from scratch in about 12 hours over the course of two days while on break.</p>
+			<p>The way that the timeline is structured is very methodical and algorithmic. It's based on a CSS grid, and every line segment is a separate element. This is because the next step I hope to accomplish is to build a Javascript program that can take in a chain of events and spit out formatted HTML code. This way, I won't have to hand-code every single element of every single timeline and will be able to produce timelines a lot faster.</p>
+			<p>Of course, all this is experimental and proof-of-concept, and I actually have nowhere to use these timelines. Develop my own RL wiki alternative? Implement this into an already-popular site, like RL Garage? Make an RL news site, and have the timeline as a cool feature to better tell stories? These are all on my mind, and if you have ideas and would like to work with me and use this timeline framework please let me know. Details on how to contact me are on my <a href='contact.html'>feedback page</a>.</p>
+			<p>If you have experience with Javascript or some other language and think you can help me build the generation/backend part of the timeline, please <a href='contact.html'>let me know</a> as well, I would be happy to work with you.</p>
+			<p>Any other feedback or comments I'd be happy to take, please leave a reply on the <a href='contact.html'>Reddit thread here.</a></p>
+		</div>
+
+	</body>
+</html>
