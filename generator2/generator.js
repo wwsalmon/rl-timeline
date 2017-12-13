@@ -126,11 +126,28 @@ $("form").on("submit",function(event) {
       eventOldTeam = eventArray[2].split("-");
       concurrent = eventArray[3];
 
+      var newPlayer = [];
+
       for (n=0;n<eventNewPlayer.length;n++){
-        var test = activeplayers.indexOf({"name":eventNewPlayer[n]});
+        var tempNewPlayer = activeplayers.filter(function(obj){
+          return obj.name == eventNewPlayer[n]; //FIX THIS STUFF IT DOESN'T WORK, ACCOUNT FOR ALL ARRAY ITEMS NOT JUST ONE
+        });
+        newPlayer.push(tempNewPlayer[0]);
       }
 
-      console.log(test);
+      var iconhtml = "<i class='fa fa-plus' aria-hidden='true'></i>"
+
+      for (n=0;n<newPlayer.length;n++){
+        $(".timeline-grid").append(
+          "<div class='timeline-straight timeline-dashed' style='grid-column-start:" + newPlayer[n].c + "; grid-row-start:" + newPlayer[n].r + `'>
+            <div class='timeline-icon ` + eventDate + "'>" + iconhtml + `
+          </div>
+          <div class='timeline-name'><span>` + activeplayers[pastobjcount].name + `</span></div>
+        </div>`
+        );
+      }
+
+      console.log(newPlayer);
 
 		}
 
