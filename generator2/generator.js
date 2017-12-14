@@ -130,28 +130,71 @@ $("form").on("submit",function(event) {
 
       for (n=0;n<eventNewPlayer.length;n++){
         var tempNewPlayer = activeplayers.filter(function(obj){
-          return obj.name == eventNewPlayer[n]; //FIX THIS STUFF IT DOESN'T WORK, ACCOUNT FOR ALL ARRAY ITEMS NOT JUST ONE
+          return obj.name == eventNewPlayer[n];
         });
         newPlayer.push(tempNewPlayer[0]);
       }
 
-      var iconhtml = "<i class='fa fa-plus' aria-hidden='true'></i>"
+      var iconhtml = `
+          <div class='timeline-icon-inner timeline-icon-leave'>
+            <div class='timeline-icon-hor'></div>
+            <div class='timeline-icon-slant'></div>
+            <div class='timeline-icon-arrow'></div>
+          </div>`
 
-      for (n=0;n<newPlayer.length;n++){
+      for (x=0;x<newPlayer.length;){
+        console.log(newPlayer.length,x);
+        console.log("bigloopstart");
         $(".timeline-grid").append(
-          "<div class='timeline-straight timeline-dashed' style='grid-column-start:" + newPlayer[n].c + "; grid-row-start:" + newPlayer[n].r + `'>
-            <div class='timeline-icon ` + eventDate + "'>" + iconhtml + `
-          </div>
-          <div class='timeline-name'><span>` + activeplayers[pastobjcount].name + `</span></div>
-        </div>`
+          "<div class='timeline-straight timeline-dashed timeline-half-left' style='grid-column-start:" + newPlayer[x].c + "; grid-row-start:" + newPlayer[x].r + `'>
+            <div class='timeline-icon ` + eventDate + "'>" + iconhtml + `</div>
+            <div class='timeline-team'><span>` + eventOldTeam[x] + `</span></div>
+          </div>`
         );
+        console.log(newPlayer.length,x);
+        for (i=0,t=activeplayers.length;i<t;i++){
+          if (newPlayer[x].name == activeplayers[i].name){
+            activeplayers.splice(i,1);
+            console.log("smallloop");
+            break;
+          }
+        }
+        x++;
+        console.log(newPlayer.length,x);
+        console.log("bigloopend");
       }
-
-      console.log(newPlayer);
 
 		}
 
 		else if(eventType == "j"){
+      eventOuter = genArray[i].split("/");
+      eventArray = eventOuter[1].split(",");
+      eventDate = eventArray[0];
+      eventNewPlayer = eventArray[1].split("-");
+      eventOldTeam = eventArray[2].split("-");
+      concurrent = eventArray[3];
+
+      var iconhtml = `
+          <div class='timeline-icon-inner timeline-icon-join'>
+            <div class='timeline-icon-hor'></div>
+            <div class='timeline-icon-slant'></div>
+            <div class='timeline-icon-arrow'></div>
+          </div>`
+
+      NumOldPlayers = activeplayers.length;
+
+      for (i=0;i<eventNewPlayer.length;i++){
+        activeplayers.push({"name":eventNewPlayer[i],"r":activeplayers[activeplayers.length-1].r+1,"c":activeplayers[activeplayers.length-1].c});
+        $(".timeline-grid").append(`
+          <div class='timeline-straight timeline-dashed timeline-half-right' style='grid-column-start:` + (activeplayers[i+NumOldPlayers].c-1) + "; grid-row-start:" + activeplayers[i+NumOldPlayers].r + `'>
+            <div class='timeline-team'><span>` + eventOldTeam[i] + `</span></div>
+          </div>
+          <div class='timeline-straight' style='grid-column-start:` + (activeplayers[i+NumOldPlayers].c) + "; grid-row-start:" + activeplayers[i+NumOldPlayers].r + `'>
+            <div class='timeline-icon ` + eventDate + "'>" + iconhtml + `</div>
+            <div class='timeline-name'><span>` + activeplayers[i+NumOldPlayers].name + `</span></div>
+          </div>`
+        )
+      }
 
 		}
 
