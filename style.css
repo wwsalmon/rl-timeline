@@ -1,0 +1,71 @@
+body{
+  margin: 0;
+  font-family: 'Roboto';
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.container{
+  width: 1440px;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  min-height: 8px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.left, .right, .center{
+  min-height: 8px;
+}
+
+.left, .right{
+  flex-basis: 500px;
+  position: relative;
+}
+
+.left{
+  margin-right: auto;
+}
+
+.center{
+  flex: 1;
+}
+
+.right{
+  margin-left: auto;
+}
+
+.marker, .block{
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+.marker{
+  height: 128px;
+  position: relative;
+}
+
+.block{
+  position: absolute;
+}
+
+.marker-inner, .block-inner{
+  background-color: #222;
+  border: 4px solid #666;
+  width: 100%;
+  height: 100%;
+}
+
+.test-button{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  background-color: red;
+}

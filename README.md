@@ -1,8 +1,21 @@
-# Rocket League Visual History Project
-By Samson Zhang, wwsalmon on GitHub
+# Rocket League (RL) Timeline
 
-A lot goes on within an Esport. New teams are constantly formed, players break away from their orgs and sign with new orgs, hundreds of high-level competitions go down in a year. It's hard to keep up with what's happening, and even harder to have a clear idea of what happened in the past. Wikis like Liquipedia are very useful for finding specific information, but it's hard to get an idea of the complex, interweaving storylines of players and teams over time from tables and static pages.
+"A new way to see Rocket League History" - a concept interface to show Rocket League Esports player and team histories by putting transfers and results in relative chronological order on a timeline. Designed and developed by u/wwsalmon.
 
-My aim with this project is to conceptualize a way to visually show the historical and current events happening throughout an Esport. By using interactive timelines, I hope to portray the movements and performances of teams and players over time in a way that is more easily understandable and contextually aware than the walls of text on wikis.
+## Purpose
 
-I made a demonstration of a page of Kronovi's player history using HTML, CSS, and JS. It's far from a perfect implementation, and is very limited in terms of expandability and interaction, but serves as a proof of concept of what I hope to one day be possible.
+The best part of Esports is the storylines. In Rocket League: Kronovi the Mountain, the very first world champion; Paschy90, the team-building legend, always just a hair away from lifting the trophy; Turbopolsa, leading his team to break through the champion's curse and become the three-time. These are the legends of the scene, and it's players like them that get people excited to watch the highest tier of Rocket League competition.
+
+But Esports is hectic. It seems like every day a team disbands, or a player leaves, or suddenly is acquired by a new org and has a totally different name and branding. Major matches and upsets happen all the time and are then talked about for weeks; it's hard to piece everything together unless you've just been there from the very beginning. Resources like Liquipedia and r/RocketLeagueEsports have done a great deal to provide a place to get the latest and most comprehensive information. However, there's still a great deal of piecing-together to be done.
+
+RL Timeline aims to tell the history of Rocket League Esports in a whole new way, with the same level of storytelling of dedicated spotlight videos and articles, but the same level of rigor and thoroughness of a wiki page. RL Timeline lays out all the relevant events - team transfers, competition results - in chronological order relative to each other on a timeline, complete with the first-hand context of Tweets and from-then reactions and commentary.
+
+## Technical Stuff
+
+### Version 0.1
+
+The first version. Horizontal timeline, built on pretty messy CSS Grid code, generated from a JQuery script.
+
+### Version 0.2
+
+The current version. Vertical timeline, built with readable, clearly-laid-out, simple HTML and CSS, with fancy JQuery doing all the stuff behind the scenes. This setup is entirely dynamic based on the HTML Markup, so tons of timelines can be built quickly.
