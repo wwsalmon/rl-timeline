@@ -5,13 +5,12 @@ function timelineLayout(){
   $(".marker").each(function(){
     corrBlock = $(this).nextAll("div").first();
     $(this).appendTo(".center");
-    centPos = $(this).position().top;
+    centPos = $(this).offset().top;
     console.log("cent" + centPos);
 
     if (corrBlock.is(".team")){
       corrBlock.appendTo(".left").css("top",centPos);
-      leftPosTop = corrBlock.position().top;
-      console.log("left" + leftPosTop);
+      leftPosTop = centPos;
 
       if (leftPosTop < leftPosBot){
         leftPosTop = leftPosBot;
@@ -20,12 +19,12 @@ function timelineLayout(){
         $(this).css("top",centPos);
       }
 
-      leftPosBot = corrBlock.position().top + corrBlock.outerHeight(true);
+      leftPosBot = leftPosTop + corrBlock.outerHeight();
     }
 
     if (corrBlock.is(".comp")){
       corrBlock.appendTo(".right").css("top",centPos);
-      rightPosTop = corrBlock.position().top;
+      rightPosTop = centPos;
       console.log("right" + rightPosTop + "prev" + rightPosBot);
 
       if (rightPosTop < rightPosBot){
@@ -35,7 +34,10 @@ function timelineLayout(){
         $(this).css("top",centPos);
       }
 
-      rightPosBot = rightPosTop + corrBlock.outerHeight(true);
+      console.log(rightPosTop + "testthing");
+      console.log(corrBlock.outerHeight());
+      rightPosBot = rightPosTop + corrBlock.outerHeight();
+      console.log("newright" + rightPosTop + "newprev" + rightPosBot)
     }
   });
 }
