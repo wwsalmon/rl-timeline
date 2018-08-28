@@ -90,6 +90,7 @@ a{
 	font-size: 24px;
 	letter-spacing: 3px;
 	font-family: 'Barlow';
+	z-index: 5;
 }
 
 .home-hero-credits a{
