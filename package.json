@@ -1,0 +1,28 @@
+{
+  "name": "rl-timeline",
+  "version": "1.0.0",
+  "description": "\"A new way to see Rocket League History\" - a concept interface to show Rocket League Esports player and team histories by putting transfers and results in relative chronological order on a timeline. Designed and developed by u/wwsalmon.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwsalmon/rl-timeline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wwsalmon/rl-timeline/issues"
+  },
+  "homepage": "https://github.com/wwsalmon/rl-timeline#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
