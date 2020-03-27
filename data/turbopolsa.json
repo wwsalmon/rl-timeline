@@ -1,0 +1,29 @@
+{
+    "name": "Turbopolsa",
+    "history": [
+        {
+            "date": "2019-07-25",
+            "type": "join",
+            "team": "NRG Esports",
+            "role": "player",
+            "ref": "https://twitter.com/NRGgg/status/1154512698790432768"
+        },
+        {
+            "date": "2019-07-19",
+            "type": "leave",
+            "ref": "https://twitter.com/dignitas/status/1141415556039548930"
+        },
+        {
+            "date": "2018-05-22",
+            "type": "orgchange",
+            "team": "Dignitas",
+            "ref": "https://twitter.com/dignitas/status/998945908225081345"
+        },
+        {
+            "date": "2017-06-23",
+            "type": "join",
+            "team": "Gale Force Esports",
+            "role": "player"
+        }
+    ]
+}
