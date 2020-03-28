@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const wtf = require('wtf_wikipedia')
+const wtf = require('wtf_wikipedia');
+const nlp = require('compromise');
 
 const url = "https://liquipedia.net/rocketleague/index.php?title=NRG_Esports&action=edit"; // for prototyping purposes. Replace with Liquipedia API eventually
 
