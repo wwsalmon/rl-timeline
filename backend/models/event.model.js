@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
-
-const eventSchema = new Schema({
+const eventSchema = new mongoose.Schema({
     player: { type: String, required: true },
     date: { type: Date, required: true },
-    type: { type: String, required: true }, // join, leave, orgchange
+    type: { type: String, required: true }, // join, leave, orgchange, rolechange
     team: String,
     role: String,
     ref: String
@@ -13,6 +11,4 @@ const eventSchema = new Schema({
     timestamps: true,
 });
 
-const Event = mongoose.model('Event', eventSchema);
-
-module.exports = Event;
+module.exports = mongoose.model('Event', eventSchema);
