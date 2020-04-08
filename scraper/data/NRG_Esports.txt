@@ -1,0 +1,193 @@
+{{TeamCardImage|startdate=2019-07-22|enddate=|filename=NRG 2019 Black.png}}{{TeamCardImage|startdate=2017-05-17|enddate=2019-07-22|filename=NRG Esports.png}}{{TeamCardImage|startdate=|enddate=2017-05-17|filename=NRG eSports.png}}
+{{Liquipedia links|counterstrike=NRG Esports|overwatch=NRG Esports|smash=NRG Esports|hearthstone=NRG eSports|apexlegends=NRG Esports|fortnite=NRG Esports|fighters=NRG Esports|clashroyale=NRG|pubg=NRG Esports}}
+{{Tabs static
+|name1=Overview
+|link1=NRG Esports
+|name2=Results
+|link2=NRG Esports/Results
+|name3=Played Matches
+|link3=NRG Esports/Played Matches
+|This=1
+}}
+{{Infobox team
+|name=NRG Esports
+|image=NRG 2019 Black.png
+|location=United States
+|location2=
+|region=na
+|manager=
+|coach={{flag/us}} Emiliano '''"[[Sizz]]"''' Benny	
+|captain=
+|sponsor=[http://www.eventsdc.com/ Events DC]<br>[https://www.sennheiser.com/ Sennheiser]<br>[https://opseat.com/ OPSEAT]<br>[http://www.netgear.com/npg/ Nighthawk]<br>[https://www.qualcomm.com/snapdragon Qualcomm snapdragon]<br>[https://recsports.berkeley.edu/esports/ Cal Esports]<br>[https://www.ibuypower.com/ iBUYPOWER]<br>[https://ballistixgaming.com/ Ballistix by Micron]<br>[https://www.lls.org/ LLS]
+|website=http://nrg.gg
+|twitter=NRGgg
+|youtube=channel/UCaXjGGAmLX-pn0Zv5wAYg9w
+|instagram=nrggram
+|reddit=
+|twitch=team/nrg
+|facebook=NRGwin
+|discord=ZExsfbY
+|achievements={{Medal|1st}} {{LeagueIconSmall/RLCS|Rocket_League_Championship_Series/Season_2/North_America|name=Rocket League Championship Series Season 2 - North America}}  {{LeagueIconSmall/RLCS|Rocket_League_Championship_Series/Season_3/North_America|name=Rocket League Championship Series Season 3 - North America}}  {{LeagueIconSmall/RLCS|Rocket_League_Championship_Series/Season_6/North_America|name=Rocket League Championship Series Season 6 - North America}} {{LeagueIconSmall/RLCS|Rocket_League_Championship_Series/Season_7/North_America|name=Rocket League Championship Series Season 7 - North America}} {{LeagueIconSmall/RLCS|Rocket_League_Championship_Series/Season_8/North_America|name=Rocket League Championship Series Season 8 - North America}}<br>{{LeagueIconSmall/RLCS|Rocket_League_Championship_Series/Season_8|name=Rocket League Championship Series Season 8 - Finals}}
+|created=2016-10-01
+}}
+{{upcoming matches team}}
+'''NRG Esports''' is an [[:Category:United States|American]] esports organization, formed after co-owners of the NBA's [[wikipedia:Sacramento Kings|Sacramento Kings]] purchased the [[leagueoflegends:LCS|LCS]] spot of [[dota2:Team Coast|Team Coast]]'s ''[[wikipedia:League of Legends|League of Legends]]'' team.
+
+==History==
+
+===Timeline===
+{{tabs dynamic
+|name4=2019
+|name3=2018
+|name2=2017
+|name1=2016
+|This=4
+|content4=
+*June 27th - [[Fireburner]] leaves [[NRG Esports]] and retires from competitive play. <ref name="fire">{{cite web|url=https://www.twitlonger.com/show/n_1squa8k|title=<3|date=2019-06-27|author=[[Fireburner]]}}</ref>
+*July 5th - Coach [[Chrome]] leaves the team. <ref name="chrome leaves">{{cite web|url=https://twitter.com/chromerl/status/1147244149156065280|title=Update regarding me and professional Rocket League|date=2019-07-05|author=[[Chrome]]}}</ref>
+*July 25th - [[Turbopolsa]] joins [[NRG Esports]]. <ref name="Turbo Joins NRG">{{cite web|url=https://twitter.com/NRGgg/status/1154512698790432768|title=THE WAIT IS OVER! ANNOUNCING THE NEWEST MEMBER OF NRG RL...please welcome @turbopolsa to the #nrgfam :) |date=2019-07-25|author=[[NRG Esports]]}}</ref>
+*October 14th - [[Sizz]] joins [[NRG Esports]] as coach. <ref name="Sizz coach">{{cite web|url=https://twitter.com/NRGgg/status/1183837827466813441|title=ANNOUNCING THE NEWEST ADDITION TO OUR ROCKET LEAGUE TEAM...please welcome @sizz to the #nrgfam as our new coach :) #ALLDAYBABY|date=2019-10-14|author=[[NRG Esports]]}}</ref>
+|content3=
+*January 8th - [[Jacob]] is released from the team. <ref name="Jacob leaves">{{cite web|url=https://twitter.com/NRGgg/status/950466891230756864|title=It’s never easy to say goodbye.  Especially to someone who has become family. Jacob McDowell has been a huge part of our NRG team and Rocket League success.  We wish him the best in everything he does. Just remember @RL_Jacob, you will always be #NRGFam|date=2018-01-08|author=[[NRG Esports]]}}</ref>
+*January 18th - [[jstn.]] joins [[NRG Esports]]. <ref name="jstn joins">{{cite web|url=https://twitter.com/NRGgg/status/954077306896748546|title=Proud to OFFICIALLY announce the newest member to the NRG|date=2018-01-18|author=[[NRG Esports]]}}</ref>
+*October 13th - [[Chrome]] joins [[NRG Esports]] as coach. <ref name="chrome">{{cite web|url=https://twitter.com/ChromeRL/status/1051287901957513217|title=Thanks for allowing me to help you guys out :) @Its_JSTN @Fireburner_ @GarrettG|date=2018-10-13|author=[[Chrome]]}}</ref>
+|content2=
+*January 11th - [[GarrettG]] joins [[NRG Esports]],<ref name="GarrettG joins">{{cite web|url=https://twitter.com/NRGgg/status/819241279938760705|date=2017-01-11|title=We're psyched to add GarrettG to the #NRGRL team.|author=[[NRG Esports]]}}</ref> [[Sadjunior]] leaves. <ref name="Sadjunior leaves">{{cite web|url=https://twitter.com/NRGgg/status/819242688730038274|date=2017-01-11|title=As a result, Sadjunior will be moving on the from org.|author=[[NRG Esports]]}}</ref>
+
+|content1=
+*October 1st - [[NRG Esports]] picks up the '''[[Kings of Urban]]''' roster. <ref name="NRG picks up KOU">{{cite web|url=https://twitter.com/NRGgg/status/782375002414813184|date=2016-10-01|title=Welcome @Fireburner_  @Sadjuni0r  and @RL_Jacob to the family as the new NRG Rocket League team!|author=[[NRG Esports]]}}</ref>
+}}
+
+==Player Roster==
+===Active===
+{{ActiveSquad|
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/> }}
+{{SquadPlayer |flag=us |player=jstn.|name=Justin Morales|joindate=2018-01-18<ref name="jstn joins"/> }}
+{{SquadPlayer |flag=se |player=Turbopolsa|name=Pierre Silfver|joindate=2019-07-25<ref name="Turbo Joins NRG"/> }}
+{{SquadPlayer |flag=us |player=Sizz |Coach|name=Emiliano Benny|joindate=2019-10-14<ref name="Sizz coach"/>}}
+}}
+
+===Former===
+{{tabs dynamic
+|name1=2019
+|name2=2018
+|name3=2017
+|name4=2016
+|This=1
+|content1=
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_8/North_America|RLCS Season 8]] Squad|
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=jstn.|name=Justin Morales|joindate=2018-01-18<ref name="jstn joins"/>|leavedate=-}}
+{{SquadPlayer |flag=se |player=Turbopolsa|name=Pierre Silfver|joindate=2019-07-25<ref name="Turbo Joins NRG"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=Sizz |Coach|name=Emiliano Benny|joindate=2019-10-14<ref name="Sizz coach"/>|leavedate=-}}
+}}<br>
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_7/North_America|RLCS Season 7]] Squad|
+{{SquadPlayer |flag=us |player=Fireburner |name=Jayson Nunez |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=2019-06-27<ref name="fire"/>|newteam=cloud9|newteamrole=Coach}}
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=jstn.|name=Justin Morales|joindate=2018-01-18<ref name="jstn joins"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=Chrome |Coach|name=Robert Gomez |joindate=2018-10-13<ref name="chrome"/>|leavedate=2019-07-05<ref name="chrome leaves"/>|newteam=spacestation gaming|newteamrole=Coach}}
+}}
+|content2=
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_6/North_America|RLCS Season 6]] Squad|
+{{SquadPlayer |flag=us |player=Fireburner |name=Jayson Nunez |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=jstn.|name=Justin Morales|joindate=2018-01-18<ref name="jstn joins"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=Chrome |Coach|name=Robert Gomez |joindate=2018-10-13<ref name="chrome"/>|leavedate=-}}
+}}<br>
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_5/North_America|RLCS Season 5]] Squad|
+{{SquadPlayer |flag=us |player=Fireburner |name=Jayson Nunez |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=jstn.|name=Justin Morales|joindate=2018-01-18<ref name="jstn joins"/>|leavedate=-}}
+}}<br>
+{{stand-ins table|
+{{stand-in |id=Torment|flag=us|name=Kyle Storer |team=c9 |for=jstn.|forflag=us |forname=Justin Morales|tournament=
+[[DreamHack/2018/Leipzig|DreamHack Open Leipzig 2018]]}}
+}}<br>
+{{FormerPlayers|
+{{SquadPlayer |flag=us |player=Jacob |name=Jacob McDowell |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=2018-01-08<ref name="Jacob leaves"/>|newteam=rogue}}
+}}
+|content3=
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_4/North_America|RLCS Season 4]] Squad|
+{{SquadPlayer |flag=us |player=Fireburner |name=Jayson Nunez |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=Jacob |name=Jacob McDowell |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/>|leavedate=-}}
+}}<br>
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_3/North_America|RLCS Season 3]] Squad|
+{{SquadPlayer |flag=us |player=Fireburner |name=Jayson Nunez |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=Jacob |name=Jacob McDowell |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=GarrettG|name=Garrett Gordon|joindate=2017-01-11<ref name="GarrettG joins"/>|leavedate=-}}
+}}<br>
+{{FormerPlayers|
+{{SquadPlayer |flag=ca |player=Sadjunior|name=Kais Zehri |joindate=2016-10-01<ref name="NRG picks up KOU"/> |leavedate=2017-01-11<ref name="Sadjunior leaves"/>|newteam=equinox }}
+}}<br>
+{{stand-ins table|
+{{stand-in |id=Turbopolsa|flag=se|name=Pierre Silfver|for=Fireburner|forflag=us |forname=Jayson Nunez|tournament=
+[[Low5ive/Liquor_League/7|Low5ive Liquor League #7]]}}
+{{stand-in |id=Moses|flag=us|name=Caleb Nichols|for=Fireburner|forflag=us |forname=Jayson Nunez|tournament=
+[[Shift_Pro_League/The_Tournament_of_Champions|SPL The Tournament of Champions]]}}
+}}
+|content4=
+{{FormerSquad|title=[[Rocket_League_Championship_Series/Season_2/North_America|RLCS Season 2]] Squad|
+{{SquadPlayer |flag=us |player=Fireburner |name=Jayson Nunez |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=us |player=Jacob |name=Jacob McDowell |joindate=2016-10-01<ref name="NRG picks up KOU"/>|leavedate=-}}
+{{SquadPlayer |flag=ca |player=Sadjunior |name=Kais Zehri |joindate=2016-10-01<ref name="NRG picks up KOU"/> |leavedate=-}}
+}}<br>
+{{stand-ins table|
+{{stand-in |id=Vafele|flag=us|name=Shane Heard|for=Fireburner|forflag=us |forname=Jayson Nunez|tournament=[[Mock-It_eSports/Street_League/3|Mock-It eSports Street League #3 Winners Semifinal and Losers Round 1]]}}
+{{stand-in |id=Turbopolsa|flag=se|name=Pierre Silfver|for=Fireburner|forflag=us |forname=Jayson Nunez|tournament=[[Mock-It_eSports/Street_League/3|Mock-It eSports Street League #3 Losers Finals and Grand Finals]]}}
+}}
+}}
+
+==Organization==
+===Active===
+{{Organization start}}
+{{OrganizationPerson |person=Andy Miller|link=wikipedia:Andy_Miller_(businessman)|flag=us|name=Andy Miller|position=Co-Founder, Co-CEO|joindate=}}
+{{OrganizationPerson |person=Brettbox|flag=us|name=Brett Lautenbach|position=President|joindate=}}
+{{OrganizationPerson |person=H3CZ|flag=us|name=Hector Rodriguez|position=Co-CEO|joindate=2019-09-15<ref name="nrg h3cz">{{cite web|url=https://twitter.com/NRGgg/status/1173359597458821122|title=IT'S OFFICIAL! please welcome our new co-ceo hector "HECZ" rodriguez|date=2019-09-15|author=[[NRG Esports]]}}</ref>}}
+{{OrganizationPerson |person=JZR |flag=fi|name=Joni Humaloja|position=Content Creator|joindate=2020-03-24<ref name="nrg jzr">{{cite web|url=https://twitter.com/NRGgg/status/1242530435219042306|title=ANNOUNCING THE NEWEST ADDITION TO THE #NRGFAM 🚗 please welcome rocket league content creator @nrg_jzr|date=2020-03-24|author=[[NRG Esports]]}}</ref>}}
+{{Organization end}}
+
+==Achievements==
+{{Team achievements table|team=NRG Esports}}
+
+==Recent Matches==
+{{Team recent matches table|team=NRG Esports}}
+
+==Media==
+===Features===
+{{box|start|padding=2em|max-width=1400px}}
+{{#ev:youtube|4-wp3hSsI_w|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|L-Nc5EZg1l4|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|i1NK2AUn0w0|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|p-vmfF3E0kM|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|QrUONnGrhRY|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|MRPghlfDfMk|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|Dig54mmNlQE|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|pWAEolFvI6k|300}}
+{{box|break|padding=2em}}
+{{#ev:youtube|d33QicY5i3c|300}}
+{{box|end}}
+
+==Gallery==
+===Featured===
+<gallery mode="packed-hover" heights="300px">
+RL SUMMIT NRG ESPORTS 2.jpg|NRG Esports at [[Rocket_League_Summit/1|Rocket League Summit 1]]<br/>From left to right: [[Turbopolsa]], [[jstn]], [[GarrettG]]
+RLCS S8 LAN Zeebo NRG.jpg|NRG Esports at [[Rocket_League_Championship_Series/Season_8|RLCS S8 - Finals]]<br/>From left to right: [[Turbopolsa]], [[jstn]], [[GarrettG]]
+</gallery>
+
+===Logos===
+<gallery mode="packed" heights="200px">
+NRG eSports.png|Original logo prior to May 17<sup>th</sup>, 2017
+NRG Esports.png|[[NRG Esports]] logo prior to July 22<sup>nd</sup>, 2019
+</gallery>
+
+==References==
+{{Reflist}}
+{{Team roster}}
