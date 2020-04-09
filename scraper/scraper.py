@@ -5,7 +5,7 @@ from pprint import pprint
 
 API_URL = "https://liquipedia.net/rocketleague/api.php"
 
-def fetch_timeline(name, force_overwrite):
+def fetch_timeline(name, force_overwrite = False):
     if path.isfile("data/" + name + ".txt") and not force_overwrite:
         print("no change")
     else:
@@ -32,7 +32,7 @@ def fetch_timeline(name, force_overwrite):
         print("file created")
 
 def parse_timeline(name):
-    fetch_timeline(name, False) # check to make sure local copy of data exists
+    fetch_timeline(name) # check to make sure local copy of data exists
     with open("data/" + name + ".txt", "r", encoding="utf-8") as file:
         text = file.read()
 
