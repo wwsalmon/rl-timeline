@@ -1,0 +1,12 @@
+{{tabs dynamic
+|name2=2018
+|name1=2017
+|This=2
+|content2=
+*May 22nd - '''[[Team Dignitas]]''' acquires the roster. [[Kaydop]], [[ViolentPanda]] and [[Turbopolsa]] leave. <ref name="dignitas acquires roster">{{Cite web|url=https://twitter.com/TeamDignitas/status/998945908225081345|date=2018-05-22|title=First order of business - bringing in a world class team. Welcome @DigViolentPanda @DIG_Kaydop @Turbopolsa to #DIGRL|author=[[Team Dignitas]]}}</ref>
+|content1=
+*April 7th - [[Gale Force eSports]] acquires [[Pocket Aces]]. <ref name="Gale Force eSports acquires Pocket Aces">{{Cite web|url=https://twitter.com/GFeSports/status/850467762996736003|title=We would like to present to you #GFERL @Paschy90, @ChausetteRL, and @ViolentPandaRL lets give them a warm welcome!|date=2017-04-06|author=[[Gale Force eSports]]}}</ref>
+*May 18th - [[Gale Force eSports]] releases [[paschy90]] and [[Chausette45]]. <ref name="Gale Force eSports releases paschy and chausette">{{Cite web|url=https://twitter.com/Paschy90/status/865321058748051456|title=I got released from my Contract at @GFeSports. I wish them best of luck in the future. Will be making a new team.|date=2017-05-18|author=[[paschy90]]}}</ref>
+*June 11th - [[Kaydop]] joins [[Gale Force eSports]]. <ref name="Gale Force eSports Welcomes Kaydop"> {{Cite web|url=https://gfe.gg/news/post/welcome-gfe-rocket-league-kaydop|title=Gale Force eSports - Welcome to GFE Rocket League, Kaydop!|date=2017-06-11|author=[[Gale Force eSports]]}}</ref>
+*June 23rd - [[Turbopolsa]] joins [[Gale Force eSports]]. <ref name="Turbopolsa joins"> {{Cite web|url=https://gfe.gg/news/post/turbopolsa-rocket-league|title= Turbopolsa Joins GFE's Rocket League Team! |date=2017-06-23|author=[[Gale Force eSports]]}}</ref>
+}}

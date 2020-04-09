@@ -5,7 +5,7 @@ from pprint import pprint
 
 API_URL = "https://liquipedia.net/rocketleague/api.php"
 
-def fetch_page_text(name, force_overwrite):
+def fetch_timeline(name, force_overwrite):
     if path.isfile("data/" + name + ".txt") and not force_overwrite:
         print("no change")
     else:
@@ -24,23 +24,24 @@ def fetch_page_text(name, force_overwrite):
         req = requests.get(API_URL, headers=headers, params=params)
         res = req.json()
         text = res["query"]["pages"][0]["revisions"][0]["content"]
+        data = str(mw.parse(text).get_sections(matches="Timeline")[0].filter_templates(matches="tabs")[0])
 
         with open("data/" + name + ".txt", "w", encoding="utf-8") as file:
-            file.write(text)
+            file.write(data)
 
         print("file created")
 
-def parse(name):
-    fetch_page_text(name, False) # check to make sure local copy of data exists
+def parse_timeline(name):
+    fetch_timeline(name, False) # check to make sure local copy of data exists
     with open("data/" + name + ".txt", "r", encoding="utf-8") as file:
         text = file.read()
 
-    return mw.parse(text)
+    return mw.parse(text).filter_templates(matches="tabs")[0]
 
-def main():
+def get_team_events(name):
     events = []
 
-    tabs = parse("NRG_Esports").get_sections(matches="Timeline")[0].filter_templates(matches="tabs")[0]
+    tabs = parse_timeline(name)
 
     for param in tabs.params:
         if param.name[:7] == "content":
@@ -65,7 +66,10 @@ def main():
 
                 events.append({"descript": descript, "date": date, "ref_urls": ref_urls})
 
-    pprint(events)
+    return events
+
+def main():
+    pprint(get_team_events("Gale_Force_eSports"))
 
 if __name__ == "__main__":
     main()
