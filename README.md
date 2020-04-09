@@ -12,4 +12,4 @@ RL Timeline aims to tell the history of Rocket League Esports in a whole new way
 
 ## Technical Stuff
 
-Previous versions used JQuery to generate a timeline using CSS Grid. Honestly a pretty impressive use of CSS Grid, and you can find this vesrion in the 0-1 folder, but the version I'm working on now uses D3.js and SVG, which should be much more robust, especially for more dynamic functionality. I tried to build a scraper/data processor in JS with a few nice NPM packages, but couldn't find a suitable NLP package, so I've since switched to Python where I can use NLTK and life is good.
+Previous versions used JQuery to generate a timeline using CSS Grid. Honestly a pretty impressive use of CSS Grid, and you can find this vesrion in the 0-1 folder, but the version I'm working on now uses D3.js and SVG, which should be much more robust, especially for more dynamic functionality. I tried to build a scraper/data processor in JS with a few nice NPM packages, but couldn't find a suitable NLP package, so I've since switched to Python where I can use ~~NLTK~~ spaCy and life is good.

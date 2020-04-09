@@ -2,6 +2,7 @@ from os import path
 import mwparserfromhell as mw
 import requests
 from pprint import pprint
+import spacy
 
 API_URL = "https://liquipedia.net/rocketleague/api.php"
 
