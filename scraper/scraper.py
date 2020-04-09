@@ -47,10 +47,25 @@ def main():
             value = str(param.value).replace("\n", "")
             this_events = value.split("*")
             for event in this_events[1:]:
-                # eventually, process the event here and push a nicer thing
-                events.append(event)
+                event = mw.parse(event)
 
-    print(events)
+                descript = event.strip_code()
+                # process this using NLP
+
+                refs = event.filter_tags(matches="ref") # gives all references as mwparser tag objects
+
+                ref_urls = []
+                date = ""
+                for ref in refs:
+                    cite = ref.contents.filter_templates(matches="cite")
+                    cite = cite[0]
+                    date = cite.get("date").value
+                    url = cite.get("url").value
+                    ref_urls.append(url)
+
+                events.append({"descript": descript, "date": date, "ref_urls": ref_urls})
+
+    pprint(events)
 
 if __name__ == "__main__":
     main()
