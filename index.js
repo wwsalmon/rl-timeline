@@ -2,7 +2,7 @@ const height = 400; //temp
 const dateWidth = 3;
 const parseDate = d3.timeParse("%Y-%m-%d");
 
-d3.json("/data/events.json", d3.autoType).then(data => {
+d3.json("/data/events2.json").then(data => {
     const minDate = d3.min(data, d=>parseDate(d.date));
     const maxDate = d3.max(data, d=>parseDate(d.date));
     const elapsedDays = d3.timeDay.count(minDate,maxDate);
@@ -38,11 +38,13 @@ d3.json("/data/events.json", d3.autoType).then(data => {
         .data(data)
         .enter()
         .append("circle")
-        .attr("class","event-point")
+        .attr("class",d => `event-point event-player-${d.player}`)
         .attr("cx", d => x(parseDate(d.date)))
         .attr("cy",20)
         .attr("r",5)
         .attr("fill","black")
+
+    const allPlayers = [...new Set(data.map(d => d.player))] // not sure if this will be used
 
     svg.call(zoom)
 

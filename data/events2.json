@@ -1,0 +1,83 @@
+[
+  {
+    "date": "2015-08-29",
+    "type": "newteam",
+    "team": "Kings of Urban",
+    "players": ["Fireburner", "Gambit", "Kyle Masc"]
+  },
+  {
+    "date": "2016-10-01",
+    "type": "orgchange",
+    "oldteam": "Kings of Urban",
+    "newteam": "NRG Esports",
+    "players": ["Fireburner", "Gambit", "Kyle Masc"]
+  },
+  {
+    "date": "2017-01-11",
+    "type": "join",
+    "player": "GarrettG",
+    "team": "NRG Esports"
+  },
+  {
+    "date": "2017-01-11",
+    "type": "leave",
+    "player": "Sadjunior",
+    "team": "NRG Esports"
+  },
+  {
+    "date": "2015-07-09",
+    "type": "newteam",
+    "team": "Cosmic Aftershock",
+    "players": ["Gibbs", "Kronovi", "Sadjunior"]
+  },
+  {
+    "date": "2015-10-30",
+    "type": "orgchange",
+    "oldteam": "Cosmic Aftershock",
+    "newteam": "iBUYPOWER",
+    "players": ["Gibbs", "Kronovi", "Sadjunior"]
+  },
+  {
+    "date": "2016-04-01",
+    "type": "leave",
+    "player": "Sadjunior",
+    "team": "iBUYPOWER"
+  },
+  {
+    "date": "2016-04-01",
+    "type": "leave",
+    "player": "Gibbs",
+    "team": "iBUYPOWER"
+  },
+  {
+    "date": "2016-04-01",
+    "type": "join",
+    "player": "Lachinio",
+    "team": "iBUYPOWER"
+  },
+  {
+    "date": "2016-04-01",
+    "type": "join",
+    "player": "Gambit",
+    "team": "iBUYPOWER"
+  },
+  {
+    "date": "2016-06-26",
+    "type": "join",
+    "player": "0ver Zer0",
+    "team": "iBUYPOWER"
+  },
+  {
+    "date": "2016-09-07",
+    "type": "orgchange",
+    "oldteam":  "iBUYPOWER",
+    "newteam": "G2 Esports",
+    "players": ["Kronovi","Lachinio","Gambit","0ver Zer0"]
+  },
+  {
+    "date": "2016-11-12",
+    "type": "leave",
+    "player": "Lachinio",
+    "newteam": "G2 Esports"
+  }
+]
