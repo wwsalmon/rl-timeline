@@ -1,5 +1,11 @@
 5/1/20
 
+**12:40** got team rectangles/positioning to work. Styling is terrible, obviously, but that's okay for now. Eventually I'll have to deal with making z-index work, as rectangles are covering previous event points; this can be fixed by reversing the order that the groups appear in the SVG, which sould be doable by steps outlined in this StackOverflow post: https://stackoverflow.com/questions/17786618/how-to-use-z-index-in-svg-elements
+
+The rectangles also don't currently scale. This is the next thing to implement.
+
+**11:39pm** finally got orgchange working lol, moved from loop to function. Leaving loop in as comment for now
+
 **8:31pm**: basic cycling through teams implemented! Next improvement is to figure out orgchange events. Idea for how to go about this:
 
 cycling through team events: if run into orgchange event, set currteam to the new team, push remaining events of currteam back to nextEvents.
