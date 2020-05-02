@@ -70,7 +70,12 @@ d3.json("/data/events2.json").then(data => {
 
         const group = svg.append("g")
             .attr("class",`group-team group-team-${currTeamClass}`)
-            .attr("transform",`translate(0 ${teamRow * teamHeight})`)
+
+        let groupTop  = teamRow * teamHeight
+
+        let groupBounds = group.node().getBBox();
+
+        // currently broken, as it doesn't use groupTop, but this is gonna change completely anyways
 
         group.selectAll(".event-point")
             .data(currEvents)
@@ -82,28 +87,26 @@ d3.json("/data/events2.json").then(data => {
             .attr("r", 5)
             .attr("fill", "black")
 
-        let groupBounds = group.node().getBBox();
-
         group.selectAll(".group-back")
-            .data([newdate])
+            .data([[newdate,groupTop]])
             .enter()
             .append("rect")
             .attr("class","group-back")
             .lower()
-            .attr("x",d => (d == false) ? groupBounds.x : x(d))
-            .attr("y",0)
-            .attr("width",d => (d == false) ? groupBounds.width : groupBounds.x - x(d) + groupBounds.width)
+            .attr("x",d => (d[0] == false) ? groupBounds.x : x(d[0]))
+            .attr("y",d => d[1])
+            .attr("width",d => (d[0] == false) ? groupBounds.width : groupBounds.x - x(d[0]) + groupBounds.width)
             .attr("height",teamHeight)
 
         group.selectAll(".group-text")
-            .data([newdate])
+            .data([[newdate,groupTop]])
             .enter()
             .append("text")
             .attr("class","group-text")
             .attr("alignment-baseline","hanging")
             .text(team)
-            .attr("x",d => (d == false) ? groupBounds.x : x(d))
-            .attr("y",0)
+            .attr("x",d => (d[0] == false) ? groupBounds.x : x(d[0]))
+            .attr("y",d => d[1])
 
         if (nextDate == false) {teamRow++; drawTeam(nextEvents);} else drawTeam(nextEvents,newteam,nextDate);
     }
@@ -154,15 +157,13 @@ d3.json("/data/events2.json").then(data => {
 
                 group.selectAll(".group-back")
                     .style("display","unset")
-                    .attr("x",d => (d == false) ? groupBounds.x : newx(d))
-                    .attr("y",0)
-                    .attr("width",d => (d == false) ? groupBounds.width : groupBounds.x - newx(d) + groupBounds.width)
+                    .attr("x",d => (d[0] == false) ? groupBounds.x : newx(d[0]))
+                    .attr("width",d => (d[0] == false) ? groupBounds.width : groupBounds.x - newx(d[0]) + groupBounds.width)
                     .attr("height",teamHeight)
 
                 group.selectAll(".group-text")
                     .style("display","unset")
-                    .attr("x",d => (d == false) ? groupBounds.x : newx(d))
-                    .attr("y",0)
+                    .attr("x",d => (d[0] == false) ? groupBounds.x : newx(d[0]))
             })
     }
 });

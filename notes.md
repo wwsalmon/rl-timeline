@@ -1,5 +1,9 @@
 5/1/20
 
+**1:54** replaced group transforms with directly setting y position on text and rectangles (not points yet cuz that's getting completely re-written anyways). This is in preparation for drawing links
+
+**1:40** recorded a quick video dev diary: https://youtu.be/y4WJf0ZPq00. Found a thing to implement in the future: respond to window size changes. Shouldn't be too hard, similar implementation to zoom.
+
 **1:15** okay, got rectangle scaling to work. Some nice `.each` work; a neat trick was setting `display: none` temporarily to calculate new group width before re-processing. Before I realized I could do this, I was playing around with width 0 and font size 0 and getting the left bound by points...not fun. But this makes it v nice.
 
 The next step is to figure out how to draw player paths in, I guess. This will be somewhat more complicated
