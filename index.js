@@ -83,21 +83,27 @@ d3.json("/data/events2.json").then(data => {
             .attr("fill", "black")
 
         let groupBounds = group.node().getBBox();
-        let groupLeft = (newdate == false) ? groupBounds.x : x(newdate);
-        let groupWidth = (newdate == false) ? groupBounds.width : groupBounds.x - x(newdate) + groupBounds.width;
 
-        group.append("rect")
+        group.selectAll(".group-back")
+            .data([newdate])
+            .enter()
+            .append("rect")
+            .attr("class","group-back")
             .lower()
-            .attr("x",groupLeft)
+            .attr("x",d => (d == false) ? groupBounds.x : x(d))
             .attr("y",0)
-            .attr("width",groupWidth)
+            .attr("width",d => (d == false) ? groupBounds.width : groupBounds.x - x(d) + groupBounds.width)
             .attr("height",teamHeight)
 
-        group.append("text")
-            .attr("x",groupLeft)
-            .attr("y",0)
+        group.selectAll(".group-text")
+            .data([newdate])
+            .enter()
+            .append("text")
+            .attr("class","group-text")
             .attr("alignment-baseline","hanging")
             .text(team)
+            .attr("x",d => (d == false) ? groupBounds.x : x(d))
+            .attr("y",0)
 
         if (nextDate == false) {teamRow++; drawTeam(nextEvents);} else drawTeam(nextEvents,newteam,nextDate);
     }
@@ -119,8 +125,7 @@ d3.json("/data/events2.json").then(data => {
     const gx = svg.append("g")
         .call(xAxis, x)
 
-    svg
-        .attr("height",height)
+    svg.attr("height",height)
         .attr("width",width)
         .call(zoom)
 
@@ -131,5 +136,33 @@ d3.json("/data/events2.json").then(data => {
         svg.selectAll(".event-point")
             .attr("cx", d => newx(parseDate(d.date)))
 
+        svg.selectAll(".group-team")
+            .each(function(){
+                let group = d3.select(this);
+
+                // hide everything before getting group bounds
+
+                group.selectAll(".group-back")
+                    .style("display","none")
+
+                group.selectAll(".group-text")
+                    .style("display","none")
+
+                let groupBounds = this.getBBox();
+
+                // gotten group bounds, now update position of everything
+
+                group.selectAll(".group-back")
+                    .style("display","unset")
+                    .attr("x",d => (d == false) ? groupBounds.x : newx(d))
+                    .attr("y",0)
+                    .attr("width",d => (d == false) ? groupBounds.width : groupBounds.x - newx(d) + groupBounds.width)
+                    .attr("height",teamHeight)
+
+                group.selectAll(".group-text")
+                    .style("display","unset")
+                    .attr("x",d => (d == false) ? groupBounds.x : newx(d))
+                    .attr("y",0)
+            })
     }
 });

@@ -1,5 +1,9 @@
 5/1/20
 
+**1:15** okay, got rectangle scaling to work. Some nice `.each` work; a neat trick was setting `display: none` temporarily to calculate new group width before re-processing. Before I realized I could do this, I was playing around with width 0 and font size 0 and getting the left bound by points...not fun. But this makes it v nice.
+
+The next step is to figure out how to draw player paths in, I guess. This will be somewhat more complicated
+
 **12:40** got team rectangles/positioning to work. Styling is terrible, obviously, but that's okay for now. Eventually I'll have to deal with making z-index work, as rectangles are covering previous event points; this can be fixed by reversing the order that the groups appear in the SVG, which sould be doable by steps outlined in this StackOverflow post: https://stackoverflow.com/questions/17786618/how-to-use-z-index-in-svg-elements
 
 The rectangles also don't currently scale. This is the next thing to implement.
