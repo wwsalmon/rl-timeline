@@ -15,7 +15,7 @@ d3.json("/data/events2.json").then(data => {
         .attr("id","main-container")
 
     const zoom = d3.zoom()
-        .scaleExtent([0.5,5])
+        .scaleExtent([1,5])
         .translateExtent([[0,-Infinity],[width,Infinity]])
         .on("zoom", zoomed);
 
@@ -34,17 +34,39 @@ d3.json("/data/events2.json").then(data => {
     const gx = svg.append("g")
         .call(xAxis, x)
 
-    svg.selectAll(".event-point")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("class",d => `event-point event-player-${d.player}`)
-        .attr("cx", d => x(parseDate(d.date)))
-        .attr("cy",20)
-        .attr("r",5)
-        .attr("fill","black")
+    // main loop
 
-    const allPlayers = [...new Set(data.map(d => d.player))] // not sure if this will be used
+    let nextEvents = data.;
+
+    while (nextEvents.length >= 1){
+        let prevEvents = nextEvents;
+        let currTeam = prevEvents[0].team;
+        let currEvents = [];
+        nextEvents = [];
+
+        for (let d of prevEvents){
+            if (d.team == currTeam || d.oldteam == currTeam || d.newteam == currTeam){
+                currEvents.push(d);
+            } else{
+                nextEvents.push(d);
+            }
+        }
+
+        let currTeamClass = currTeam.replace(/ /g,"_");
+
+        svg.selectAll(`.event-team-${currTeamClass}`)
+            .data(currEvents)
+            .enter()
+            .append("circle")
+            .attr("class",d => `event-point event-player-${d.player}`)
+            .attr("cx", d => x(parseDate(d.date)))
+            .attr("cy",20)
+            .attr("r",5)
+            .attr("fill","black")
+    }
+
+
+    // zooming
 
     svg.call(zoom)
 
