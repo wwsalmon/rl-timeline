@@ -29,34 +29,49 @@ d3.json("/data/events2.json").then(data => {
 
     let teamRow = 0;
 
-    function drawTeam(eventList, team = false, newdate = false){
+    function drawTeam(eventList, orgChange = false){
         if (eventList.length == 0) return;
-        if (team === false) team = eventList[0].team;
+        let currTeam;
+        let newDate = false;
+        if (orgChange === false){
+            currTeam = {
+                "team": eventList[0].team,
+                "players": eventList[0].players
+            };
+        }
+        else{
+            currTeam = {
+                "team": orgChange.newteam,
+                "players": orgChange.players
+            };
+            newDate = parseDate(orgChange.date);
+        }
         let currEvents = [];
         let nextEvents = [];
+        orgChange = false; // prepare to reset this and send it along to next function call
         let nextDate = false;
         let newteam = false;
 
         let iterations = 0;
 
-        console.log("%c TEAM: " + team,"color: red");
+        console.log("%c TEAM: " + currTeam.team,"color: red");
+        console.groupCollapsed();
         for (let i in eventList){
             console.log(`considering ${JSON.stringify(eventList[i])}, item ${+i + 1} of ${eventList.length}`)
             if (iterations > 20) throw new Error("stuck in loop")
-            if (newteam != false){
+            if (orgChange !== false){
                 console.log("pushed to next " + JSON.stringify(eventList[i]))
                 let event = eventList[i];
                 nextEvents.push(event)
                 iterations++;
             }
-            else if ((eventList[i].oldteam == team || eventList[i].newteam == team) && eventList[i].type == "orgchange"){
+            else if ((eventList[i].oldteam === currTeam.team || eventList[i].newteam === currTeam.team) && eventList[i].type === "orgchange"){
                 console.log(`orgchange to ${eventList[i].newteam}`)
                 let event = eventList[i];
-                nextDate = parseDate(event.date);
-                currEvents.push(event)
-                newteam = eventList[i].newteam;
+                orgChange = event;
+                currEvents.push(event);
             }
-            else if (eventList[i].team == team){
+            else if (eventList[i].team === currTeam.team){
                 console.log("current " + JSON.stringify(eventList[i]))
                 currEvents.push(eventList[i])
             }
@@ -66,14 +81,15 @@ d3.json("/data/events2.json").then(data => {
             }
         }
 
-        let currTeamClass = team.replace(/ /g,"_");
+        console.log(currEvents);
+        console.groupEnd();
+
+        let currTeamClass = currTeam.team.replace(/ /g,"_");
 
         const group = svg.append("g")
             .attr("class",`group-team group-team-${currTeamClass}`)
 
         let groupTop  = teamRow * teamHeight
-
-        let groupBounds = group.node().getBBox();
 
         // currently broken, as it doesn't use groupTop, but this is gonna change completely anyways
 
@@ -87,8 +103,10 @@ d3.json("/data/events2.json").then(data => {
             .attr("r", 5)
             .attr("fill", "black")
 
+        let groupBounds = group.node().getBBox();
+
         group.selectAll(".group-back")
-            .data([[newdate,groupTop]])
+            .data([[newDate,groupTop]])
             .enter()
             .append("rect")
             .attr("class","group-back")
@@ -99,16 +117,17 @@ d3.json("/data/events2.json").then(data => {
             .attr("height",teamHeight)
 
         group.selectAll(".group-text")
-            .data([[newdate,groupTop]])
+            .data([[newDate,groupTop]])
             .enter()
             .append("text")
             .attr("class","group-text")
             .attr("alignment-baseline","hanging")
-            .text(team)
+            .text(currTeam.team)
             .attr("x",d => (d[0] == false) ? groupBounds.x : x(d[0]))
             .attr("y",d => d[1])
 
-        if (nextDate == false) {teamRow++; drawTeam(nextEvents);} else drawTeam(nextEvents,newteam,nextDate);
+        if (orgChange == false) teamRow++;
+        drawTeam(nextEvents,orgChange);
     }
 
     drawTeam(firstEvents);

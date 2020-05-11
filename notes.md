@@ -1,3 +1,9 @@
+5/11/20
+
+7:35pm completed a little refactor to pass in orgChange event instead of just date and newTeam; this way, players can be passed through
+
+7:15pm a little lull in my life -- time to revisit this project. Fixed a bug and just discovered console.group!
+
 5/1/20
 
 **1:54** replaced group transforms with directly setting y position on text and rectangles (not points yet cuz that's getting completely re-written anyways). This is in preparation for drawing links
