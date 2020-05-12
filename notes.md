@@ -1,5 +1,11 @@
 5/11/20
 
+8:31pm
+
+![](.pastes\2020-05-11-20-32-14.png)
+
+lots of progress! Now rendering points by player
+
 7:35pm completed a little refactor to pass in orgChange event instead of just date and newTeam; this way, players can be passed through
 
 7:15pm a little lull in my life -- time to revisit this project. Fixed a bug and just discovered console.group!

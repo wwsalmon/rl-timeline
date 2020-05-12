@@ -32,18 +32,15 @@ d3.json("/data/events2.json").then(data => {
     function drawTeam(eventList, orgChange = false){
         if (eventList.length == 0) return;
         let currTeam;
+        let teamPlayers;
         let newDate = false;
         if (orgChange === false){
-            currTeam = {
-                "team": eventList[0].team,
-                "players": eventList[0].players
-            };
+            currTeam = eventList[0].team;
+            teamPlayers = eventList[0].players.map(d => {return {"name": d, "events": []};});
         }
         else{
-            currTeam = {
-                "team": orgChange.newteam,
-                "players": orgChange.players
-            };
+            currTeam = orgChange.newteam;
+            teamPlayers = orgChange.players.map(d => {return {"name": d, "events": []};});
             newDate = parseDate(orgChange.date);
         }
         let currEvents = [];
@@ -52,9 +49,11 @@ d3.json("/data/events2.json").then(data => {
         let nextDate = false;
         let newteam = false;
 
+        console.log(teamPlayers);
+
         let iterations = 0;
 
-        console.log("%c TEAM: " + currTeam.team,"color: red");
+        console.log("%c TEAM: " + currTeam,"color: red");
         console.groupCollapsed();
         for (let i in eventList){
             console.log(`considering ${JSON.stringify(eventList[i])}, item ${+i + 1} of ${eventList.length}`)
@@ -65,15 +64,40 @@ d3.json("/data/events2.json").then(data => {
                 nextEvents.push(event)
                 iterations++;
             }
-            else if ((eventList[i].oldteam === currTeam.team || eventList[i].newteam === currTeam.team) && eventList[i].type === "orgchange"){
+            else if ((eventList[i].oldteam === currTeam || eventList[i].newteam === currTeam) && eventList[i].type === "orgchange"){
                 console.log(`orgchange to ${eventList[i].newteam}`)
-                let event = eventList[i];
-                orgChange = event;
-                currEvents.push(event);
+                let currEvent = eventList[i];
+                for (let currPlayer of currEvent.players){
+                    let currPlayerObj = teamPlayers.find(player => player.name == currPlayer);
+                    currPlayerObj.events.push(currEvent);
+                }
+                orgChange = currEvent;
+                currEvents.push(currEvent);
             }
-            else if (eventList[i].team === currTeam.team){
-                console.log("current " + JSON.stringify(eventList[i]))
+            else if (eventList[i].team === currTeam){
+                let currEvent = eventList[i];
+                if (currEvent.type == "newteam"){
+                    for (let currPlayer of currEvent.players){
+                        let currPlayerObj = teamPlayers.find(player => player.name == currPlayer);
+                        currPlayerObj.events.push(currEvent);
+                    }
+                }
+                else{
+                    let currPlayerObj = teamPlayers.find(player => player.name == currEvent.player); // returns teamPlayers array object with same name as player attached to current event; otherwise returns undefined
+                    if (currPlayerObj == undefined){ // if player attached to current event is not in teamPlayers array, add them and current event
+                        teamPlayers.push({
+                            "name": currEvent.player,
+                            "events": [currEvent]
+                        })
+                    }
+                    else{ // otherwise, just push current event
+                        currPlayerObj.events.push(currEvent);
+                    }
+                }
+
+                console.log("current " + JSON.stringify(currEvent))
                 currEvents.push(eventList[i])
+
             }
             else{
                 console.log("pushed to next " + JSON.stringify(eventList[i]))
@@ -81,25 +105,40 @@ d3.json("/data/events2.json").then(data => {
             }
         }
 
-        console.log(currEvents);
+        console.log(currEvents, teamPlayers);
         console.groupEnd();
 
-        let currTeamClass = currTeam.team.replace(/ /g,"_");
+        let currTeamClass = currTeam.replace(/ /g,"_");
 
         const group = svg.append("g")
             .attr("class",`group-team group-team-${currTeamClass}`)
 
         let groupTop  = teamRow * teamHeight
 
+        const y = d3.scaleBand()
+            .domain(d3.map(teamPlayers, d => d.name).keys())
+            .range([0, teamHeight]);
+
         // currently broken, as it doesn't use groupTop, but this is gonna change completely anyways
 
-        group.selectAll(".event-point")
-            .data(currEvents)
+        const playerGroups = group
+            .selectAll(".group-player")
+            .data(teamPlayers)
+            .enter()
+            .append("g")
+            .attr("transform", d => "translate(0 " + (groupTop + y(d.name)) + ")")
+            .attr("class", d => {
+                let playerClass = `group-player-${d.name.replace(/ /g,"_")}`;
+                return `group-player ${playerClass}`;
+            })
+
+        playerGroups.selectAll(".point-player")
+            .data(d => d.events)
             .enter()
             .append("circle")
-            .attr("class", d => `event-point event-player-${d.player}`)
+            .attr("class", "point-player")
             .attr("cx", d => x(parseDate(d.date)))
-            .attr("cy", 20)
+            .attr("cy", 0)
             .attr("r", 5)
             .attr("fill", "black")
 
@@ -155,7 +194,7 @@ d3.json("/data/events2.json").then(data => {
         const newx = d3.event.transform.rescaleX(x)
         gx.call(xAxis, newx)
 
-        svg.selectAll(".event-point")
+        svg.selectAll(".point-player")
             .attr("cx", d => newx(parseDate(d.date)))
 
         svg.selectAll(".group-team")

@@ -6,6 +6,42 @@
     "players": ["Fireburner", "Gambit", "Kyle Masc"]
   },
   {
+    "date": "2015-10-04",
+    "type": "leave",
+    "player": "Kyle Masc",
+    "team": "Kings of Urban"
+  },
+  {
+    "date": "2015-10-14",
+    "type": "join",
+    "player": "Jacob",
+    "team": "Kings of Urban"
+  },
+  {
+    "date": "2015-10-27",
+    "type": "leave",
+    "player": "Gambit",
+    "team": "Kings of Urban"
+  },
+  {
+    "date": "2015-11-07",
+    "type": "join",
+    "player": "Moses",
+    "team": "Kings of Urban"
+  },
+  {
+    "date": "2016-04-08",
+    "type": "leave",
+    "player": "Moses",
+    "team": "Kings of Urban"
+  },
+  {
+    "date": "2016-04-08",
+    "type": "join",
+    "player": "Sadjunior",
+    "team": "Kings of Urban"
+  },
+  {
     "date": "2016-10-01",
     "type": "orgchange",
     "oldteam": "Kings of Urban",
