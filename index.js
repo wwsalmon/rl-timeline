@@ -21,6 +21,19 @@ d3.json("/data/events2.json").then(data => {
         .domain(d3.extent(data, d => parseDate(d.date)))
         .range([0,width])
 
+    let allPlayers = [];
+
+    for (let event of data){
+        if (event.player !== undefined) allPlayers.push(event.player);
+        else if (event.players !== undefined){
+            for (let player of event.players) allPlayers.push(player);
+        }
+    }
+
+    allPlayers = [...new Set(allPlayers)];
+
+    console.log(allPlayers);
+
     // main loop
 
     let firstEvents = data.sort(function(a, b) {
@@ -126,19 +139,18 @@ d3.json("/data/events2.json").then(data => {
             .data(teamPlayers)
             .enter()
             .append("g")
-            .attr("transform", d => "translate(0 " + (groupTop + y(d.name)) + ")")
             .attr("class", d => {
                 let playerClass = `group-player-${d.name.replace(/ /g,"_")}`;
                 return `group-player ${playerClass}`;
             })
 
         playerGroups.selectAll(".point-player")
-            .data(d => d.events)
+            .data(d => d.events.map(x => [x, d.name]))
             .enter()
             .append("circle")
             .attr("class", "point-player")
-            .attr("cx", d => x(parseDate(d.date)))
-            .attr("cy", 0)
+            .attr("cx", d => x(parseDate(d[0].date)))
+            .attr("cy", d => groupTop + y(d[1]))
             .attr("r", 5)
             .attr("fill", "black")
 
@@ -171,6 +183,37 @@ d3.json("/data/events2.json").then(data => {
 
     drawTeam(firstEvents);
 
+    const linkGen = d3.linkHorizontal();
+
+    for (let player of allPlayers){
+        const playerEscaped = player.replace(/ /g,"_");
+
+        let nodes = [];
+
+        d3.selectAll(`.group-player-${playerEscaped} circle`)
+            .each(function(){
+                nodes.push([this.getAttribute("cx"), this.getAttribute("cy")])
+            })
+
+        let links = [];
+
+        for (let i = 0; i < nodes.length - 1; i++){
+            links.push({
+                "source": nodes[i],
+                "target": nodes[i+1]
+            });
+        }
+
+        svg.selectAll(`.link-player-${playerEscaped}`)
+            .data(links)
+            .enter()
+            .append("path")
+            .attr("class", `.link-player-${playerEscaped}`)
+            .attr("d", linkGen)
+            .attr("fill", "none")
+            .attr("stroke", "black");
+    }
+
     // zooming
 
     const height = teamRow * teamHeight;
@@ -195,7 +238,7 @@ d3.json("/data/events2.json").then(data => {
         gx.call(xAxis, newx)
 
         svg.selectAll(".point-player")
-            .attr("cx", d => newx(parseDate(d.date)))
+            .attr("cx", d => newx(parseDate(d[0].date)))
 
         svg.selectAll(".group-team")
             .each(function(){

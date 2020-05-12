@@ -1,5 +1,13 @@
 5/11/20
 
+9:24pm
+
+![](.pastes\2020-05-11-21-24-28.png)
+
+Basic links implementation! Some things to point out:
+- as a general problem, there is no recognition of continuation to the present barring explicit termination -- i.e. G2 just stops short in November 2016 because that's the latest event; NRG, too, is still an active team. With regards to link, look at the three players in the red block (iBP I believe): their paths just stop completely rather than continuing.
+- Look at the bottom row, second to last mini-row. The first part of it, the two dots connected by a line from November 2015 to April 2016, is Moses. That dot you see in January 2017 is GarretG. It's on the same row. Why? I have no idea. It's literally how I wanted this to work, but I don't know why it does it. Hm.
+
 8:31pm
 
 ![](.pastes\2020-05-11-20-32-14.png)
