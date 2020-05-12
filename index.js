@@ -42,6 +42,27 @@ d3.json("/data/events2.json").then(data => {
 
     let teamRow = 0;
 
+    function getLinkData(playerEscaped){
+
+        let nodes = [];
+
+        d3.selectAll(`.group-player-${playerEscaped} circle`)
+            .each(function(){
+                nodes.push([this.getAttribute("cx"), this.getAttribute("cy")])
+            })
+
+        let links = [];
+
+        for (let i = 0; i < nodes.length - 1; i++){
+            links.push({
+                "source": nodes[i],
+                "target": nodes[i+1]
+            });
+        }
+
+        return links;
+    }
+
     function drawTeam(eventList, orgChange = false){
         if (eventList.length == 0) return;
         let currTeam;
@@ -187,28 +208,13 @@ d3.json("/data/events2.json").then(data => {
 
     for (let player of allPlayers){
         const playerEscaped = player.replace(/ /g,"_");
-
-        let nodes = [];
-
-        d3.selectAll(`.group-player-${playerEscaped} circle`)
-            .each(function(){
-                nodes.push([this.getAttribute("cx"), this.getAttribute("cy")])
-            })
-
-        let links = [];
-
-        for (let i = 0; i < nodes.length - 1; i++){
-            links.push({
-                "source": nodes[i],
-                "target": nodes[i+1]
-            });
-        }
+        const links = getLinkData(playerEscaped);
 
         svg.selectAll(`.link-player-${playerEscaped}`)
             .data(links)
             .enter()
             .append("path")
-            .attr("class", `.link-player-${playerEscaped}`)
+            .attr("class", `link-player-${playerEscaped}`)
             .attr("d", linkGen)
             .attr("fill", "none")
             .attr("stroke", "black");
@@ -239,6 +245,18 @@ d3.json("/data/events2.json").then(data => {
 
         svg.selectAll(".point-player")
             .attr("cx", d => newx(parseDate(d[0].date)))
+
+        for (let player of allPlayers){
+            const playerEscaped = player.replace(/ /g,"_");
+            const links = getLinkData(playerEscaped);
+
+            const playerLinks = svg.selectAll(`.link-player-${playerEscaped}`)
+                .data(links)
+                .join("path")
+                .attr("d", linkGen)
+
+            playerLinks.exit().remove();
+        }
 
         svg.selectAll(".group-team")
             .each(function(){

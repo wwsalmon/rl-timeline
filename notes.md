@@ -1,5 +1,7 @@
 5/11/20
 
+9:44pm made links respond to Zoom
+
 9:24pm
 
 ![](.pastes\2020-05-11-21-24-28.png)
