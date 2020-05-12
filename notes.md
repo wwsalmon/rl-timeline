@@ -1,5 +1,13 @@
 5/11/20
 
+**11:49pm** Okay, gonna sign off for the night. I looked at Cosmic/iBP and couldn't figure out who was who, so the next step I think will definitely be adding team names, hover popups, etc.
+
+As far as rendering main data, we've hit a big milestone; the program can now visualize any dataset with a specific set of constraints, a sort of very very basic preliminary feature completeness. These constraints are events like team disbands, new teams with old names, etc., so definitely more work will need to be done; and of course, it's not very usable, without labels and looking the way that it goes.
+
+The long-ish-term step will be to allow the order that teams display in to shuffle around, implement virtual panning and zooming, etc. I suspect this will require a good amount of refactoring, or at least tons of new code, but this starting point I think is valuable and a good amount of its logic will continue to be used.
+
+Exciting!
+
 **11:42pm**
 
 ![](.pastes\2020-05-11-23-42-40.png)

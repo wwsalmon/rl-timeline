@@ -13,8 +13,8 @@ d3.json("/data/events2.json").then(data => {
         .attr("id","main-container")
 
     const zoom = d3.zoom()
-        .scaleExtent([1,5])
-        .translateExtent([[0,-Infinity],[width,Infinity]])
+        .scaleExtent([0.5,5])
+        .translateExtent([[-200,-Infinity],[width+200,Infinity]])
         .on("zoom", zoomed);
 
     const x = d3.scaleTime()
