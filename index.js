@@ -254,8 +254,9 @@ d3.json("/data/events2.json").then(data => {
     // zooming
     const height = teamRow * teamHeight;
 
-    const xAxis = (g, x) => g.call(d3.axisBottom(x)
-        .ticks(d3.timeMonth)
+    const xAxis = (g, x, monthsPerTick) => g.attr("class","rl-axis")
+        .call(d3.axisBottom(x)
+        .ticks(d3.timeMonth, monthsPerTick)
         .tickFormat(d3.timeFormat("%B %Y"))
         .tickSize(height))
         .selectAll("text")
@@ -272,7 +273,16 @@ d3.json("/data/events2.json").then(data => {
     function zoomed(){
         // make new x axis
         const newx = d3.event.transform.rescaleX(x)
-        gx.call(xAxis, newx)
+        const extent = newx.domain()[1] - newx.domain()[0]
+        const range = newx.range()[1] - newx.range()[0]
+        const msInMonth = 2.628e9;
+        const pixelPerMonth = range/ (extent / msInMonth);
+        const minPixelPerMonth = 84;
+        let monthsPerTick = 1;
+        while (pixelPerMonth * monthsPerTick < minPixelPerMonth){
+            monthsPerTick++;
+        }
+        gx.call(xAxis, newx, monthsPerTick);
 
         // move around player points
         svg.selectAll(".point-player")

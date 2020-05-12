@@ -1,5 +1,25 @@
 5/11/20
 
+**11:42pm**
+
+![](.pastes\2020-05-11-23-42-40.png)
+
+See those dates? January 2017, March 2017. That's right. The tick increment will now change based on zoom level based on a specified allowable ratio:
+
+```
+const newx = d3.event.transform.rescaleX(x)
+        const extent = newx.domain()[1] - newx.domain()[0]
+        const range = newx.range()[1] - newx.range()[0]
+        const msInMonth = 2.628e9;
+        const pixelPerMonth = range/ (extent / msInMonth);
+        const minPixelPerMonth = 84;
+        let monthsPerTick = 1;
+        while (pixelPerMonth * monthsPerTick < minPixelPerMonth){
+            monthsPerTick++;
+        }
+        gx.call(xAxis, newx, monthsPerTick);
+```
+
 **11:19pm**
 
 ![](.pastes\2020-05-11-23-19-33.png)
