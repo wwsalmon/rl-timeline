@@ -1,6 +1,12 @@
 5/11/20
 
-10:39pm
+**11:19pm**
+
+![](.pastes\2020-05-11-23-19-33.png)
+
+It's a little jank, but...we've got extensions to the present! A reminder that Rocket League history really isn't long at all.
+
+**10:39pm**
 
 ![](.pastes\2020-05-11-22-39-15.png)
 
@@ -12,21 +18,21 @@ Well, yeah, the color is gone, but that's collateral damage. The rectangles don'
 
 Before, I relied on team groups for selections, and I thought this might be hard to replicate, but turns out it's pretty easy with class names. Lots of my selectors now look like `.player-group.team-${teamEscaped}` and work exactly the same as before.
 
-9:55pm
+**9:55pm**
 
 ![](.pastes\2020-05-11-21-55-23.png)
 
 That is a beauty.
 
-9:48pm
+**9:48pm**
 
 ![](.pastes\2020-05-11-21-48-58.png)
 
 Just realized something. Take a close look at that one path in the middle that goes from bottom team to red team. See how it seems to split from the first point? Clearly that's not how time works, it should go from first to second to third. This is happening because the third point is getting rendered before the first two, and links are drawn in order of nodes by DOM appearance. I thought for a moment that this would be terrible to fix, before realizing a simple solution: just sort the nodes array by x coordinate before turning them into links! Will work on that now.
 
-9:44pm made links respond to Zoom
+**9:44pm** made links respond to Zoom
 
-9:24pm
+**9:24pm**
 
 ![](.pastes\2020-05-11-21-24-28.png)
 
@@ -34,15 +40,15 @@ Basic links implementation! Some things to point out:
 - as a general problem, there is no recognition of continuation to the present barring explicit termination -- i.e. G2 just stops short in November 2016 because that's the latest event; NRG, too, is still an active team. With regards to link, look at the three players in the red block (iBP I believe): their paths just stop completely rather than continuing.
 - Look at the bottom row, second to last mini-row. The first part of it, the two dots connected by a line from November 2015 to April 2016, is Moses. That dot you see in January 2017 is GarretG. It's on the same row. Why? I have no idea. It's literally how I wanted this to work, but I don't know why it does it. Hm.
 
-8:31pm
+**8:31pm**
 
 ![](.pastes\2020-05-11-20-32-14.png)
 
 lots of progress! Now rendering points by player
 
-7:35pm completed a little refactor to pass in orgChange event instead of just date and newTeam; this way, players can be passed through
+**7:35pm** completed a little refactor to pass in orgChange event instead of just date and newTeam; this way, players can be passed through
 
-7:15pm a little lull in my life -- time to revisit this project. Fixed a bug and just discovered console.group!
+**7:15pm** a little lull in my life -- time to revisit this project. Fixed a bug and just discovered console.group!
 
 5/1/20
 

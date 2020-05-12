@@ -18,7 +18,7 @@ d3.json("/data/events2.json").then(data => {
         .on("zoom", zoomed);
 
     const x = d3.scaleTime()
-        .domain(d3.extent(data, d => parseDate(d.date)))
+        .domain([d3.min(data, d => parseDate(d.date)), new Date()])
         .range([0,width])
 
     let allPlayers = [];
@@ -68,43 +68,46 @@ d3.json("/data/events2.json").then(data => {
         return links;
     }
 
+    // function that calls itself over and over until all events passed in are rendered
     function drawTeam(eventList, orgChange = false){
+        // base case: no more events, get out of there
         if (eventList.length == 0) return;
-        let currTeam;
-        let teamPlayers;
-        let newDate = false;
+
+        // initialize some variables about the team currently being processed
+        let currTeam; // name of current team
+        let teamPlayers; // array of player objects containing name and an array of events
+        let activePlayers = []; // array of active players
+        let newDate = false; // a date where the team block starts that isn't the first event
+
+        // if orgChange is passed in, set above variables based on this; otherwise, set them according to events left in eventList
         if (orgChange === false){
             currTeam = eventList[0].team;
             teamPlayers = eventList[0].players.map(d => {return {"name": d, "events": []};});
         }
         else{
             currTeam = orgChange.newteam;
-            teamPlayers = orgChange.players.map(d => {return {"name": d, "events": []};});
+            teamPlayers = orgChange.players.map(d => {activePlayers.push(d); return {"name": d, "events": []};});
             newDate = parseDate(orgChange.date);
         }
+        // prepare to reset this and send it along to next function call
+        orgChange = false;
+
+        // arrays to sort events into
         let currEvents = [];
         let nextEvents = [];
-        orgChange = false; // prepare to reset this and send it along to next function call
-        let nextDate = false;
-        let newteam = false;
 
-        console.log(teamPlayers);
-
-        let iterations = 0;
-
-        console.log("%c TEAM: " + currTeam,"color: red");
-        console.groupCollapsed();
+        // cycle through all events, sorting them into currEvents and nextEvents as well as processing other variables
         for (let i in eventList){
-            console.log(`considering ${JSON.stringify(eventList[i])}, item ${+i + 1} of ${eventList.length}`)
-            if (iterations > 20) throw new Error("stuck in loop")
+
+            // if a previous orgChange event has been processed, kick all remaining events to nextEvents
             if (orgChange !== false){
-                console.log("pushed to next " + JSON.stringify(eventList[i]))
                 let event = eventList[i];
                 nextEvents.push(event)
-                iterations++;
             }
+
+            // if current event is orgChange
+            // eventually there will need to be a case for disbanding as well
             else if ((eventList[i].oldteam === currTeam || eventList[i].newteam === currTeam) && eventList[i].type === "orgchange"){
-                console.log(`orgchange to ${eventList[i].newteam}`)
                 let currEvent = eventList[i];
                 for (let currPlayer of currEvent.players){
                     let currPlayerObj = teamPlayers.find(player => player.name == currPlayer);
@@ -113,49 +116,68 @@ d3.json("/data/events2.json").then(data => {
                 orgChange = currEvent;
                 currEvents.push(currEvent);
             }
+
+            // if current event belongs to this team and is not orgChange
             else if (eventList[i].team === currTeam){
                 let currEvent = eventList[i];
+
                 if (currEvent.type == "newteam"){
                     for (let currPlayer of currEvent.players){
+                        activePlayers.push(currPlayer);
                         let currPlayerObj = teamPlayers.find(player => player.name == currPlayer);
                         currPlayerObj.events.push(currEvent);
                     }
                 }
+
+                // eventually add a case for disbanding as well
+
                 else{
+                    if (currEvent.type == "leave"){
+                        let playerInd = activePlayers.indexOf(currEvent.player);
+                        activePlayers.splice(playerInd, 1);
+                    }
                     let currPlayerObj = teamPlayers.find(player => player.name == currEvent.player); // returns teamPlayers array object with same name as player attached to current event; otherwise returns undefined
                     if (currPlayerObj == undefined){ // if player attached to current event is not in teamPlayers array, add them and current event
                         teamPlayers.push({
                             "name": currEvent.player,
                             "events": [currEvent]
                         })
+                        activePlayers.push(currEvent.player)
                     }
                     else{ // otherwise, just push current event
                         currPlayerObj.events.push(currEvent);
                     }
                 }
 
-                console.log("current " + JSON.stringify(currEvent))
                 currEvents.push(eventList[i])
 
             }
+
+            // if current event does not belong to this team
             else{
-                console.log("pushed to next " + JSON.stringify(eventList[i]))
                 nextEvents.push(eventList[i])
             }
         }
 
-        console.log(currEvents, teamPlayers);
-        console.groupEnd();
+        if (orgChange === false){
+            for (let currPlayer of activePlayers){
+                let currPlayerObj = teamPlayers.find(player => player.name == currPlayer);
+                currPlayerObj.events.push({
+                    "date": d3.timeFormat("%Y-%m-%d")(Date.now()),
+                    "type": "current",
+                    "player": currPlayer,
+                    "team": currTeam
+                })
+            }
+        }
+
+        console.log(currEvents);
 
         let teamEscaped = currTeam.replace(/ /g,"_");
-
         let groupTop  = teamRow * teamHeight
-
         const y = d3.scaleBand()
             .domain(d3.map(teamPlayers, d => d.name).keys())
             .range([0, teamHeight]);
-
-        // currently broken, as it doesn't use groupTop, but this is gonna change completely anyways
 
         const playerGroups = svg.selectAll(`.player-group.team-${teamEscaped}`)
             .data(teamPlayers)
@@ -206,6 +228,7 @@ d3.json("/data/events2.json").then(data => {
             .attr("x",d => (d[0] == false) ? minPointX : x(d[0]))
             .attr("y",d => d[1])
 
+        // only move to the next line if the team does not continue on via org change
         if (orgChange == false) teamRow++;
         drawTeam(nextEvents,orgChange);
     }
