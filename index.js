@@ -22,8 +22,12 @@ d3.json("/data/events2.json").then(data => {
         .range([0,width])
 
     let allPlayers = [];
+    let allTeams = [];
 
     for (let event of data){
+        if (event.team !== undefined) allTeams.push(event.team);
+        else if (event.newteam !== undefined) allTeams.push(event.newteam); // should never need oldteam as it will have been included elsewhere
+
         if (event.player !== undefined) allPlayers.push(event.player);
         else if (event.players !== undefined){
             for (let player of event.players) allPlayers.push(player);
@@ -31,8 +35,7 @@ d3.json("/data/events2.json").then(data => {
     }
 
     allPlayers = [...new Set(allPlayers)];
-
-    console.log(allPlayers);
+    allTeams = [...new Set(allTeams)];
 
     // main loop
 
@@ -46,14 +49,12 @@ d3.json("/data/events2.json").then(data => {
 
         let nodes = [];
 
-        d3.selectAll(`.group-player-${playerEscaped} circle`)
+        d3.selectAll(`.player-${playerEscaped} circle`)
             .each(function(){
                 nodes.push([this.getAttribute("cx"), this.getAttribute("cy")])
             })
 
         nodes.sort((a,b) => a[0] - b[0]);
-
-        console.log(nodes);
 
         let links = [];
 
@@ -146,10 +147,7 @@ d3.json("/data/events2.json").then(data => {
         console.log(currEvents, teamPlayers);
         console.groupEnd();
 
-        let currTeamClass = currTeam.replace(/ /g,"_");
-
-        const group = svg.append("g")
-            .attr("class",`group-team group-team-${currTeamClass}`)
+        let teamEscaped = currTeam.replace(/ /g,"_");
 
         let groupTop  = teamRow * teamHeight
 
@@ -159,47 +157,53 @@ d3.json("/data/events2.json").then(data => {
 
         // currently broken, as it doesn't use groupTop, but this is gonna change completely anyways
 
-        const playerGroups = group
-            .selectAll(".group-player")
+        const playerGroups = svg.selectAll(`.player-group.team-${teamEscaped}`)
             .data(teamPlayers)
             .enter()
             .append("g")
             .attr("class", d => {
-                let playerClass = `group-player-${d.name.replace(/ /g,"_")}`;
-                return `group-player ${playerClass}`;
+                let playerClass = `player-${d.name.replace(/ /g,"_")} team-${teamEscaped}`;
+                return `player-group ${playerClass}`;
             })
+
+        let pointXCoords = [];
 
         playerGroups.selectAll(".point-player")
             .data(d => d.events.map(x => [x, d.name]))
             .enter()
             .append("circle")
-            .attr("class", "point-player")
-            .attr("cx", d => x(parseDate(d[0].date)))
-            .attr("cy", d => groupTop + y(d[1]))
+            .attr("class", `point-player team-${teamEscaped}`)
+            .attr("cx", d => {
+                let xCoord = x(parseDate(d[0].date));
+                pointXCoords.push(xCoord);
+                return xCoord;
+            })
+            .attr("cy", d => groupTop + y(d[1]) + y.bandwidth() / 2)
             .attr("r", 5)
             .attr("fill", "black")
 
-        let groupBounds = group.node().getBBox();
+        let minPointX = d3.min(pointXCoords)
+        let pointsWidth = d3.max(pointXCoords) - d3.min(pointXCoords);
 
-        group.selectAll(".group-back")
+        svg.selectAll(`.group-back.team-${teamEscaped}`)
             .data([[newDate,groupTop]])
             .enter()
             .append("rect")
-            .attr("class","group-back")
+            .attr("class",`group-back team-${teamEscaped}`)
             .lower()
-            .attr("x",d => (d[0] == false) ? groupBounds.x : x(d[0]))
+            .attr("x",d => (d[0] == false) ? minPointX : x(d[0]))
             .attr("y",d => d[1])
-            .attr("width",d => (d[0] == false) ? groupBounds.width : groupBounds.x - x(d[0]) + groupBounds.width)
+            .attr("width",d => (d[0] == false) ? pointsWidth : minPointX - x(d[0]) + pointsWidth)
             .attr("height",teamHeight)
 
-        group.selectAll(".group-text")
+        svg.selectAll(`.group-text.team-${teamEscaped}`)
             .data([[newDate,groupTop]])
             .enter()
             .append("text")
-            .attr("class","group-text")
+            .attr("class",`group-text team-${teamEscaped}`)
             .attr("alignment-baseline","hanging")
-            .text(currTeam.team)
-            .attr("x",d => (d[0] == false) ? groupBounds.x : x(d[0]))
+            .text(currTeam)
+            .attr("x",d => (d[0] == false) ? minPointX : x(d[0]))
             .attr("y",d => d[1])
 
         if (orgChange == false) teamRow++;
@@ -225,7 +229,6 @@ d3.json("/data/events2.json").then(data => {
     }
 
     // zooming
-
     const height = teamRow * teamHeight;
 
     const xAxis = (g, x) => g.call(d3.axisBottom(x)
@@ -244,12 +247,15 @@ d3.json("/data/events2.json").then(data => {
         .call(zoom)
 
     function zoomed(){
+        // make new x axis
         const newx = d3.event.transform.rescaleX(x)
         gx.call(xAxis, newx)
 
+        // move around player points
         svg.selectAll(".point-player")
             .attr("cx", d => newx(parseDate(d[0].date)))
 
+        // recalculate and draw links
         for (let player of allPlayers){
             const playerEscaped = player.replace(/ /g,"_");
             const links = getLinkData(playerEscaped);
@@ -262,31 +268,26 @@ d3.json("/data/events2.json").then(data => {
             playerLinks.exit().remove();
         }
 
-        svg.selectAll(".group-team")
-            .each(function(){
-                let group = d3.select(this);
+        //redraw team backgrounds, text
+        for (let team of allTeams){
+            const teamEscaped = team.replace(/ /g,"_");
 
-                // hide everything before getting group bounds
+            let pointXCoords = [];
 
-                group.selectAll(".group-back")
-                    .style("display","none")
+            svg.selectAll(`.point-player.team-${teamEscaped}`)
+                .each(function(){
+                    pointXCoords.push(+this.getAttribute("cx"));
+                })
 
-                group.selectAll(".group-text")
-                    .style("display","none")
+            let minPointX = d3.min(pointXCoords)
+            let pointsWidth = d3.max(pointXCoords) - d3.min(pointXCoords);
 
-                let groupBounds = this.getBBox();
+            svg.selectAll(`.group-back.team-${teamEscaped}`)
+                .attr("x",d => (d[0] == false) ? minPointX : newx(d[0]))
+                .attr("width",d => (d[0] == false) ? pointsWidth : minPointX - newx(d[0]) + pointsWidth)
 
-                // gotten group bounds, now update position of everything
-
-                group.selectAll(".group-back")
-                    .style("display","unset")
-                    .attr("x",d => (d[0] == false) ? groupBounds.x : newx(d[0]))
-                    .attr("width",d => (d[0] == false) ? groupBounds.width : groupBounds.x - newx(d[0]) + groupBounds.width)
-                    .attr("height",teamHeight)
-
-                group.selectAll(".group-text")
-                    .style("display","unset")
-                    .attr("x",d => (d[0] == false) ? groupBounds.x : newx(d[0]))
-            })
+            svg.selectAll(`.group-text.team-${teamEscaped}`)
+                .attr("x",d => (d[0] == false) ? minPointX : newx(d[0]))
+        }
     }
 });

@@ -1,5 +1,17 @@
 5/11/20
 
+10:39pm
+
+![](.pastes\2020-05-11-22-39-15.png)
+
+Look at that! See any changes?
+
+Well, yeah, the color is gone, but that's collateral damage. The rectangles don't cover up the points anymore! This is because I refactored a bunch of my code to generate elements in the SVG directly rather than groups for each team as I had before. The DOM now looks like this:
+
+![](.pastes\2020-05-11-22-40-17.png)
+
+Before, I relied on team groups for selections, and I thought this might be hard to replicate, but turns out it's pretty easy with class names. Lots of my selectors now look like `.player-group.team-${teamEscaped}` and work exactly the same as before.
+
 9:55pm
 
 ![](.pastes\2020-05-11-21-55-23.png)
