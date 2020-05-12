@@ -51,6 +51,10 @@ d3.json("/data/events2.json").then(data => {
                 nodes.push([this.getAttribute("cx"), this.getAttribute("cy")])
             })
 
+        nodes.sort((a,b) => a[0] - b[0]);
+
+        console.log(nodes);
+
         let links = [];
 
         for (let i = 0; i < nodes.length - 1; i++){

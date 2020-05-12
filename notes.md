@@ -1,5 +1,17 @@
 5/11/20
 
+9:55pm
+
+![](.pastes\2020-05-11-21-55-23.png)
+
+That is a beauty.
+
+9:48pm
+
+![](.pastes\2020-05-11-21-48-58.png)
+
+Just realized something. Take a close look at that one path in the middle that goes from bottom team to red team. See how it seems to split from the first point? Clearly that's not how time works, it should go from first to second to third. This is happening because the third point is getting rendered before the first two, and links are drawn in order of nodes by DOM appearance. I thought for a moment that this would be terrible to fix, before realizing a simple solution: just sort the nodes array by x coordinate before turning them into links! Will work on that now.
+
 9:44pm made links respond to Zoom
 
 9:24pm
